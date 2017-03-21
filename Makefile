@@ -102,6 +102,8 @@ objects_songcast_dll =$(objects_topology) $(objects_sender) $(objects_receiver) 
 $(objdir)$(dllprefix)ohSongcast.$(dllext) : $(objects_topology) $(objects_sender) $(objects_songcast) $(objects_driver)
 	$(link_dll) $(linkoutput)$(objdir)$(dllprefix)ohSongcast.$(dllext) $(objects_songcast_dll)
 
+$(objdir)$(dllprefix)ohSongcast.$(libext) : $(objects_topology) $(objects_msg) $(objects_sender) $(objects_receiver) $(objects_songcast) $(objects_driver)
+	$(ar)$(libprefix)ohSongcast.$(libext) $(objects_songcast_dll)
 
 $(objdir)TestSongcast.$(exeext) : $(objdir)$(dllprefix)ohSongcast.$(dllext) ohSongcast/TestSongcast.cpp
 	$(compiler)TestSongcast.$(objext) -c $(cflags) $(includes) ohSongcast/TestSongcast.cpp
