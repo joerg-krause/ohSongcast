@@ -1,8 +1,7 @@
 objects_sender   = $(objdir)Ohm.$(objext) \
                    $(objdir)OhmMsg.$(objext) \
                    $(objdir)OhmSocket.$(objext) \
-                   $(objdir)OhmSender.$(objext) \
-                   $(ohnetgenerateddir)DvAvOpenhomeOrgSender1.$(objext)
+                   $(objdir)OhmSender.$(objext)
 
 headers_sender   = Ohm.h \
                    OhmMsg.h \
@@ -15,8 +14,7 @@ objects_receiver = $(objdir)Ohm.$(objext) \
                    $(objdir)OhmSocket.$(objext) \
                    $(objdir)OhmReceiver.$(objext) \
 				   $(objdir)OhmProtocolMulticast.$(objext) \
-				   $(objdir)OhmProtocolUnicast.$(objext) \
-                   $(ohnetgenerateddir)DvAvOpenhomeOrgReceiver1.$(objext)
+				   $(objdir)OhmProtocolUnicast.$(objext)
 
 headers_receiver = Ohm.h \
                    OhmMsg.h \
@@ -44,13 +42,9 @@ $(objdir)OhmProtocolMulticast.$(objext) : OhmProtocolMulticast.cpp OhmReceiver.h
 $(objdir)OhmProtocolUnicast.$(objext) : OhmProtocolUnicast.cpp OhmReceiver.h
 	$(compiler)OhmProtocolUnicast.$(objext) -c $(cflags) $(includes) OhmProtocolUnicast.cpp
 
-objects_topology = $(ohnetgenerateddir)CpAvOpenhomeOrgProduct1.$(objext) \
-                   $(ohnetgenerateddir)CpAvOpenhomeOrgVolume1.$(objext) \
-                   $(ohnetgenerateddir)CpAvOpenhomeOrgReceiver1.$(objext) \
-				   $(objdir)ReceiverManager1.$(objext) \
+objects_topology = $(objdir)ReceiverManager1.$(objext) \
                    $(objdir)ReceiverManager2.$(objext) \
-                   $(objdir)ReceiverManager3.$(objext) \
-                   $(ohtopologydir)$(libprefix)ohTopology.$(libext)
+                   $(objdir)ReceiverManager3.$(objext)
 
 headers_topology = ohSongcast$(dirsep)ReceiverManager1.h \
                    ohSongcast$(dirsep)ReceiverManager2.h \
@@ -101,17 +95,17 @@ $(objdir)TestReceiverManager3.$(exeext) : ohSongcast$(dirsep)TestReceiverManager
 ZoneWatcher : $(objdir)ZoneWatcher.$(exeext)
 $(objdir)ZoneWatcher.$(exeext) : ZoneWatcher$(dirsep)ZoneWatcher.cpp  $(headers_sender)  $(objects_sender)
 	$(compiler)ZoneWatcher.$(objext) -c $(cflags) $(includes) ZoneWatcher$(dirsep)ZoneWatcher.cpp
-	$(link) $(linkoutput)$(objdir)ZoneWatcher.$(exeext) $(objdir)ZoneWatcher.$(objext) $(objects_sender) $(ohnetdir)$(libprefix)ohNetCore.$(libext) $(ohnetdir)$(libprefix)TestFramework.$(libext)
+	$(link) $(linkoutput)$(objdir)ZoneWatcher.$(exeext) $(objdir)ZoneWatcher.$(objext) $(objects_sender) $(ohnetdir)$(libprefix)ohNetCore.$(libext) $(ohnetgenerateddir)$(libprefix)ohNetGeneratedDevices.$(libext) $(ohnetdir)$(libprefix)TestFramework.$(libext)
 
 WavSender : $(objdir)WavSender.$(exeext)
 $(objdir)WavSender.$(exeext) : WavSender$(dirsep)WavSender.cpp $(headers_sender) $(objects_sender)
 	$(compiler)WavSender.$(objext) -c $(cflags) $(includes) WavSender$(dirsep)WavSender.cpp
-	$(link) $(linkoutput)$(objdir)WavSender.$(exeext) $(objdir)WavSender.$(objext) $(objects_sender) $(ohnetdir)$(libprefix)ohNetCore.$(libext) $(ohnetdir)$(libprefix)TestFramework.$(libext)
+	$(link) $(linkoutput)$(objdir)WavSender.$(exeext) $(objdir)WavSender.$(objext) $(objects_sender) $(ohnetdir)$(libprefix)ohNetCore.$(libext) $(ohnetgenerateddir)$(libprefix)ohNetGeneratedDevices.$(libext) $(ohnetdir)$(libprefix)TestFramework.$(libext)
 
 Receiver : $(objdir)Receiver.$(exeext) 
 $(objdir)Receiver.$(exeext) : Receiver$(dirsep)Receiver.cpp $(headers_receiver) $(objects_receiver)
 	$(compiler)Receiver.$(objext) -c $(cflags) $(includes) Receiver$(dirsep)Receiver.cpp
-	$(link) $(linkoutput)$(objdir)Receiver.$(exeext) $(objdir)Receiver.$(objext) $(objects_receiver) $(ohnetdir)$(libprefix)ohNetCore.$(libext) $(ohnetdir)$(libprefix)TestFramework.$(libext)
+	$(link) $(linkoutput)$(objdir)Receiver.$(exeext) $(objdir)Receiver.$(objext) $(objects_receiver) $(ohnetdir)$(libprefix)ohNetCore.$(libext) $(ohnetgenerateddir)$(libprefix)ohNetGeneratedDevices.$(libext) $(ohnetdir)$(libprefix)TestFramework.$(libext)
 
 
 $(objdir)ohSongcast.net.dll : $(objdir)$(dllprefix)ohSongcast.$(dllext) ohSongcast$(dirsep)Songcast.cs $(ohnetdir)ohNet.net.dll
