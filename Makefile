@@ -97,7 +97,7 @@ $(objdir)SoundcardDriver.$(objext) : ohSongcast/Posix/SoundcardDriver.cpp
 	$(compiler)SoundcardDriver.$(objext) -c $(cflags) $(includes) ohSongcast/Posix/SoundcardDriver.cpp
 endif
 
-objects_songcast_dll =$(objects_topology) $(objects_sender) $(objects_songcast) $(objects_driver) $(ohnetdir)$(libprefix)ohNetCore.$(libext)
+objects_songcast_dll =$(objects_topology) $(objects_sender) $(objects_receiver) $(objects_msg) $(objects_songcast) $(objects_driver) $(ohnetdir)$(libprefix)ohNetCore.$(libext)
 
 $(objdir)$(dllprefix)ohSongcast.$(dllext) : $(objects_topology) $(objects_sender) $(objects_songcast) $(objects_driver)
 	$(link_dll) $(linkoutput)$(objdir)$(dllprefix)ohSongcast.$(dllext) $(objects_songcast_dll)
@@ -105,6 +105,6 @@ $(objdir)$(dllprefix)ohSongcast.$(dllext) : $(objects_topology) $(objects_sender
 
 $(objdir)TestSongcast.$(exeext) : $(objdir)$(dllprefix)ohSongcast.$(dllext) ohSongcast/TestSongcast.cpp
 	$(compiler)TestSongcast.$(objext) -c $(cflags) $(includes) ohSongcast/TestSongcast.cpp
-	$(link) $(linkoutput)$(objdir)TestSongcast.$(exeext) $(objdir)TestSongcast.$(objext) $(objects_songcast_dll) $(ohnetdir)$(libprefix)TestFramework.$(libext)
+	$(link) $(linkoutput)$(objdir)TestSongcast.$(exeext) $(objdir)TestSongcast.$(objext) $(objects_songcast_dll) $(ohtopologydir)$(libprefix)ohTopology.$(libext) $(ohnetgenerateddir)$(libprefix)ohNetGeneratedDevices.$(libext) $(ohnetgenerateddir)$(libprefix)ohNetGeneratedProxies.$(libext) $(ohnetdir)$(libprefix)ohNetCore.$(libext) $(ohnetdir)$(libprefix)TestFramework.$(libext)
 
 
