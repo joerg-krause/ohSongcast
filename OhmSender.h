@@ -96,6 +96,7 @@ public:
 
 	const Brx& SenderUri() const;
 	const Brx& SenderMetadata() const; // might change after SetName() and SetMulticast()
+	TBool Enabled() const;
 
 	void SetName(const Brx& aValue);
 	void SetChannel(TUint aValue);
