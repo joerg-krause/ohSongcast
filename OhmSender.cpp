@@ -597,6 +597,10 @@ const Brx& OhmSender::SenderMetadata() const
 	return (iSenderMetadata);
 }
 
+TBool OhmSender::Enabled() const
+{
+    return (iEnabled);
+}
 
 void OhmSender::SetName(const Brx& aValue)
 {
