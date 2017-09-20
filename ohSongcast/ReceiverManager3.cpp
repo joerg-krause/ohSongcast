@@ -287,11 +287,11 @@ ReceiverManager3::~ReceiverManager3()
 
 void ReceiverManager3::ReceiverAdded(ReceiverManager2Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager3::ReceiverAdded ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager3::ReceiverAdded ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
 	ReceiverManager3Receiver* receiver = new ReceiverManager3Receiver(iHandler, aReceiver, *this);
 	aReceiver.SetUserData(receiver);
@@ -299,11 +299,11 @@ void ReceiverManager3::ReceiverAdded(ReceiverManager2Receiver& aReceiver)
 
 void ReceiverManager3::ReceiverChanged(ReceiverManager2Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager3::ReceiverChanged ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager3::ReceiverChanged ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
 	ReceiverManager3Receiver* receiver = (ReceiverManager3Receiver*)(aReceiver.UserData());
 	ASSERT(receiver);
@@ -313,11 +313,11 @@ void ReceiverManager3::ReceiverChanged(ReceiverManager2Receiver& aReceiver)
 
 void ReceiverManager3::ReceiverRemoved(ReceiverManager2Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager3::ReceiverRemoved ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager3::ReceiverRemoved ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
 	ReceiverManager3Receiver* receiver = (ReceiverManager3Receiver*)(aReceiver.UserData());
 	ASSERT(receiver);
