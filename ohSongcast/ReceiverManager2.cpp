@@ -502,11 +502,11 @@ void ReceiverManager2::ReceiverVolumeLimitChanged(ReceiverManager1Receiver& aRec
 
 void ReceiverManager2::ReceiverAdded(ReceiverManager2Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager2::ReceiverAdded ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager2::ReceiverAdded ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
 	ReceiverManager2Job* job = iFree.Read();
 	job->Set(aReceiver, &IReceiverManager2Handler::ReceiverAdded);
@@ -515,11 +515,11 @@ void ReceiverManager2::ReceiverAdded(ReceiverManager2Receiver& aReceiver)
 
 void ReceiverManager2::ReceiverChanged(ReceiverManager2Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager2::ReceiverChanged ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager2::ReceiverChanged ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
 	ReceiverManager2Job* job = iFree.Read();
 	job->Set(aReceiver, &IReceiverManager2Handler::ReceiverChanged);
@@ -528,11 +528,11 @@ void ReceiverManager2::ReceiverChanged(ReceiverManager2Receiver& aReceiver)
 
 void ReceiverManager2::ReceiverRemoved(ReceiverManager2Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager2::ReceiverRemoved ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager2::ReceiverRemoved ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
 	ReceiverManager2Job* job = iFree.Read();
 	job->Set(aReceiver, &IReceiverManager2Handler::ReceiverRemoved);

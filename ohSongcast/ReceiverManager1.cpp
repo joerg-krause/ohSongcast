@@ -3,6 +3,7 @@
 #include <OpenHome/Private/Ascii.h>
 #include <OpenHome/Private/Arch.h>
 #include <OpenHome/Private/Debug.h>
+#include "../Debug.h"
 
 // Assumes only one Receiver per group (UPnP device)
 
@@ -524,33 +525,33 @@ void ReceiverManager1::RoomVolumeLimitChanged(IRoom& aRoom)
 // IReceiverManager1Handler
 void ReceiverManager1::ReceiverAdded(ReceiverManager1Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager1::ReceiverAdded ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager1::ReceiverAdded ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
     iHandler.ReceiverAdded(aReceiver);
 }
 
 void ReceiverManager1::ReceiverChanged(ReceiverManager1Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager1::ReceiverChanged ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager1::ReceiverChanged ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
     iHandler.ReceiverChanged(aReceiver);
 }
 
 void ReceiverManager1::ReceiverRemoved(ReceiverManager1Receiver& aReceiver)
 {
-    LOG(kTrace, "ReceiverManager1::ReceiverRemoved ");
-    LOG(kTrace, aReceiver.Room());
-    LOG(kTrace, ":");
-    LOG(kTrace, aReceiver.Group());
-    LOG(kTrace, "\n");
+    LOG_TRACE(kSongcast, "ReceiverManager1::ReceiverRemoved ");
+    LOG_TRACE(kSongcast, aReceiver.Room());
+    LOG_TRACE(kSongcast, ":");
+    LOG_TRACE(kSongcast, aReceiver.Group());
+    LOG_TRACE(kSongcast, "\n");
 
     iHandler.ReceiverRemoved(aReceiver);
 }
