@@ -81,7 +81,7 @@ class OhmSender
     static const TUint kTimerAliveJoinTimeoutMs = 10000;
     static const TUint kTimerAliveAudioTimeoutMs = 3000;
     static const TUint kTimerExpiryTimeoutMs = 10000;
-    static const TUint kMaxSlaveCount = 4;
+    static const TUint kMaxSlaveCount = 8;
     static const TUint kMaxZoneFrameBytes = 1 * 1024;
     static const TUint kTimerZoneUriDelayMs = 100;
     static const TUint kTimerPresetInfoDelayMs = 100;
