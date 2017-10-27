@@ -879,7 +879,15 @@ void OhmReceiver::Process(OhmMsgAudio& aMsg)
 		aMsg.RemoveRef();
 	}
 	else {
-		iRepairing = RepairBegin(aMsg);
+		if (iDriver->RepairingEnabled()) {
+			iRepairing = RepairBegin(aMsg);
+		}
+		else {
+			// If repairing is disable simply drop the audio message
+			// as the consumer is propably busy.
+			iFrame = aMsg.Frame();
+			iDriver->Add(aMsg);
+		}
 	}
 }
 

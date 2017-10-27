@@ -45,6 +45,7 @@ public:
 	virtual void Playing() = 0;
 	virtual void Disconnected() = 0;
 	virtual void Stopped() = 0;
+	virtual TBool RepairingEnabled() { return true; };
 	virtual ~IOhmReceiverDriver() {}
 };
 
