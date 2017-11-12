@@ -278,11 +278,11 @@ void OhmSenderDriver::SetAudioFormat(TUint aSampleRate, TUint aBitRate, TUint aC
     iCodecName.Replace(aCodecName);
 }
 
-void OhmSenderDriver::SendAudio(const TByte* aData, TUint aBytes, TBool aHalt)
+void OhmSenderDriver::SendAudio(const TByte* aData, TUint aBytes, TUint aSamples, TBool aHalt)
 {
     AutoMutex mutex(iMutex);
     
-    TUint samples = aBytes * 8 / iChannels / iBitDepth;
+    TUint samples = aSamples;
 
     if (!iSend) {
         iSampleStart += samples;
