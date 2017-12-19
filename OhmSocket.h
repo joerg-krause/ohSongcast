@@ -14,8 +14,8 @@ namespace Av {
 
 class OhmSocket : public IReaderSource, public INonCopyable
 {
-    static const TUint kSendBufBytes = 16392;
-    static const TUint kReceiveBufBytes = 16392;
+    static const TUint kSendBufBytes = 160*1014;
+    static const TUint kReceiveBufBytes = 160*1014;
 
 public:
     OhmSocket(Environment& aEnv);
