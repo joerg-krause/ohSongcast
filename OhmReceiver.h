@@ -226,6 +226,7 @@ private:
     Bws<kMaxZoneFrameBytes> iTxZone;
 	Timer iTimerZoneQuery;
 	OhmMsgFactory iFactory;
+	TBool iTrackChanged;
 	TUint iFrame;
 	TBool iRepairing;
 	TUint iRepairLast;
