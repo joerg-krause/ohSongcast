@@ -36,6 +36,7 @@ OhmReceiver::OhmReceiver(Environment& aEnv, TIpAddress aInterface, TUint aTtl, I
 	, iRxZone(iSocketZone)
     , iTimerZoneQuery(aEnv, MakeFunctor(*this, &OhmReceiver::SendZoneQuery), "OhmReceiverZoneQuery")
 	, iFactory(500, 10, 10)
+	, iTrackChanged(false)
 	, iRepairing(false)
     , iTimerRepair(aEnv, MakeFunctor(*this, &OhmReceiver::TimerRepairExpired), "OhmReceiverRepair")
 {
@@ -843,7 +844,26 @@ void OhmReceiver::Process(OhmMsgAudio& aMsg)
 		iDriver->Add(aMsg);
 		return;
 	}
-	
+
+	if (iTrackChanged) {
+		iTrackChanged = false;
+
+		// Cancel repairing
+		iTimerRepair.Cancel();
+		if (iRepairing) {
+			iRepairFirst->RemoveRef();
+			while (iFifoRepair.SlotsUsed() > 0) {
+				iFifoRepair.Read()->RemoveRef();
+			}
+			iRepairing = false;
+		}
+
+		// Process audio message
+		iFrame = aMsg.Frame();
+		iDriver->Add(aMsg);
+		return;
+	}
+
 	if (iRepairing) {
 		iRepairing = Repair(aMsg);
 		return;
@@ -869,6 +889,8 @@ void OhmReceiver::Process(OhmMsgTrack& aMsg)
 		iTransportState = eConnected;
 		iDriver->Connected();
 	}
+
+	iTrackChanged = true;
 
 	iDriver->Add(aMsg);
 }
