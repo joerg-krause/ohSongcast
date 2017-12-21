@@ -743,6 +743,18 @@ void OhmReceiver::TimerRepairExpired()
 {
 	iMutexTransport.Wait();
 
+	static TUint _start = 0;
+	static TUint _end = 0;
+	static TUint requests = 0;
+
+	if (requests > 2) {
+		RepairReset();
+		iRepairing = false;
+		requests = 0;
+		_start = 0;
+		_end = 0;
+	}
+
 	if (iRepairing) {
 		LOG(kMedia, "REQUEST RESEND");
 
@@ -754,6 +766,13 @@ void OhmReceiver::TimerRepairExpired()
 
 		TUint start = iFrame + 1;
 		TUint end = iRepairFirst->Frame();
+
+		if (start == _start && end == _end) {
+			requests++;
+		} else {
+			_start = start;
+			_end = end;
+		}
 
 		// phase 1 - request the frames between the last sent down the pipeline and the first waiting frame
 
