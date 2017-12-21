@@ -155,8 +155,8 @@ class OhmReceiver : public IOhmReceiver, public IOhmMsgProcessor
 	static const TUint kMaxRepairBacklogFrames = 200;
 	static const TUint kMaxRepairMissedFrames = 20;
 
-	static const TUint kInitialRepairTimeoutMs = 10;
-	static const TUint kSubsequentRepairTimeoutMs = 30;
+	static const TUint kInitialRepairTimeoutMs = 50;
+	static const TUint kSubsequentRepairTimeoutMs = 100;
 
 public:
     OhmReceiver(Environment& aEnv, TIpAddress aInterface, TUint aTtl, IOhmReceiverDriver& aDriver);
