@@ -542,11 +542,6 @@ void  OhmReceiver::RepairReset()
 	while (iFifoRepair.SlotsUsed() > 0) {
 		iFifoRepair.Read()->RemoveRef();
 	}
-
-	iTransportState = eDisconnected;
-	iDriver->Disconnected();
-
-	iLatency = 0;
 }
 
 TBool OhmReceiver::Repair(OhmMsgAudio& aMsg)
