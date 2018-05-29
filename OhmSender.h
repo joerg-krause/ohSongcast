@@ -30,6 +30,8 @@ public:
     OhmSenderDriver(Environment& aEnv);
     void SetAudioFormat(TUint aSampleRate, TUint aBitRate, TUint aChannels, TUint aBitDepth, TBool aLossless, const Brx& aCodecName);
     void SendAudio(const TByte* aData, TUint aBytes);
+    void SendAudio(const TByte* aData, TUint aBytes, TBool aHalt);
+    void SendAudio(const TByte* aData, TUint aBytes, TBool aHalt, TUint aSamples);
 
 private:    
     // IOhmSenderDriver

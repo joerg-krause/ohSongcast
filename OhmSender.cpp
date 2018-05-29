@@ -280,12 +280,21 @@ void OhmSenderDriver::SetAudioFormat(TUint aSampleRate, TUint aBitRate, TUint aC
 
 void OhmSenderDriver::SendAudio(const TByte* aData, TUint aBytes)
 {
+    SendAudio(aData, aBytes, false);
+}
+
+void OhmSenderDriver::SendAudio(const TByte* aData, TUint aBytes, TBool aHalt)
+{
+    TUint samples = aBytes * 8 / iChannels / iBitDepth;
+    SendAudio(aData, aBytes, aHalt, samples);
+}
+
+void OhmSenderDriver::SendAudio(const TByte* aData, TUint aBytes, TBool aHalt, TUint aSamples)
+{
     AutoMutex mutex(iMutex);
     
-    TUint samples = aBytes * 8 / iChannels / iBitDepth;
-
     if (!iSend) {
-        iSampleStart += samples;
+        iSampleStart += aSamples;
         return;
     }
 
@@ -303,11 +312,11 @@ void OhmSenderDriver::SendAudio(const TByte* aData, TUint aBytes)
 	}
 
 	OhmMsgAudio& msg = iFactory.CreateAudio(
-		false,  // halt
+		aHalt,
         iLossless,
 		false,
 		false,
-        samples,
+        aSamples,
         iFrame,
 		0, // network timestamp
 		latency,
@@ -337,7 +346,7 @@ void OhmSenderDriver::SendAudio(const TByte* aData, TUint aBytes)
     catch (NetworkError&) {
     }
         
-    iSampleStart += samples;
+    iSampleStart += aSamples;
 
     iFrame++;
 }
